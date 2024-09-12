@@ -2,7 +2,6 @@ package com.Amazokart.generic.common;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -19,116 +18,128 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 
-public class BaseClass extends ObjectUtility
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class BaseClass extends ObjectUtility 
 {
-	public  WebDriver driver=null;
-	public static WebDriver driver_static=null;
-	//login--logout
+	public WebDriver driver;
+	public static WebDriver driver_static;
+	
 	
 	@DataProvider(name="register")
+	
 	public Object[][] registerdata()
 	{
 		Object[][] data=new Object[3][3];
-		data[0][0]="Josh";
-		data[0][1]="101";
+		data[0][0]="Joshni";
+		data[0][1]="Joshni@gmail.com";
 		data[0][2]="Testing";
 		
-		data[1][0]="Joshni";
-		data[1][1]="102";
+		data[1][0]="Reshma";
+		data[1][1]="rrshma@gmail.com";
 		data[1][2]="Developer";
 		
-		data[2][0]="Joshii";
-		data[2][1]="103";
+		data[2][0]="Priyanka";
+		data[2][1]="priyapolusani@gmail.com";
 		data[2][2]="Devops";
 		
 		return data;
 	}
-	
-	@BeforeMethod
-	public void login()
-	{
-		   Reporter.log("Login sucessfully",true);
+    @BeforeSuite
+	public void getSuiteConnections() 
+   {
+		Reporter.log("get SuiteConnections done Successful", true);
 	}
-   @AfterMethod
-   public void logout()
-   {
-	   Reporter.log("Logout sucessfully",true);
 
-   }
-   @Parameters("browser")
-   
-   //To open Browser
-   @BeforeClass
-   public void browserSetup(String bname) 
-   {            
-	  
-	   //if user browsername="chrome"
-	   if(bname.equalsIgnoreCase("chrome"))
-	   {
-		   //Launch the Browser-Chrome
-		   driver=new ChromeDriver();
-	   }
-	 //if user browsername="firefox"
-	   else if(bname.equalsIgnoreCase("firefox"))
-	   {
-		   //Launch the Browser-firefox
-		   driver=new FirefoxDriver();
-	   }
-	 //if user browsername="edge"
-	   else if(bname.equalsIgnoreCase("edge"))
-	   {
-		   //Launch the Browser-edge
-		   driver=new EdgeDriver();
-	   }
-	   else {
-		   System.out.println("u have enter the invalid BrowserName");
-		   driver=new ChromeDriver();
-	   }
-	   
-	   //create obj for property file
-	   objectCreation();
-	   
-	   //ftetch the data
-	    String url1 = propertyobj.readdata("url");
-	    System.out.println(url1);
+	
+	@BeforeTest
+	public void precondition()
+	{
+		//create object for all library
 		
-	   //Navigate to the Application via URL
-	   driver.get(url1);
-	   Reporter.log("BrowserSetup sucessfully",true);
-	   
-   }
-   @AfterClass
-   public void closebrowser()
-   {
-	   //close the browser
-	  
-	   Reporter.log("Closebrowser sucessfully",true);
-   }
-   
-   //JDBC connections
-   @BeforeTest
-   public void precondition()
-   {
-	   Reporter.log("Precondition Done sucessfully",true);
-   }
-   @AfterTest
-   public void postcondition()
-   {
-	   Reporter.log("Postcondition Done sucessfully",true);
+		objectCreation();
+		
+		//configure the SparkReportInformation
+		spark.config().setDocumentTitle("Regression Testing for RegisterPage");
+		spark.config().setReportName("Regression Suite");
+		spark.config().setTheme(Theme.DARK);
+		
+		//Attach the Spark Report and ExtentReport
+		report.attachReporter(spark);
+		
+		//Configure the system information in Extent Report
+		report.setSystemInfo("DeviceName:","Joshni");
+		report.setSystemInfo("OperatingSystem:","WINDOWS11");
+		report.setSystemInfo("Browser:","chrome");
+		report.setSystemInfo("BrowserVersion:","128.0.6613.121");
+		
+		Reporter.log("Pre Condition Successful", true);
+	}
 
-   }
+	
+	
+
+
+	@Parameters("browser")
+	@BeforeClass
+	public void browserSetUp(String browsername) 
+	{
+		//create the TestREport
+				test=report.createTest("RegisterValidData");
+		
+		//Step 1:Launch the browser
+		webdriverobj.launchBrowser(browsername);
+		
+		//Step 2: Maximize the browser
+		webdriverobj.maximizeBrowser();
+		
+		
+		// Fetch url data property file
+		String url1 = propertyobj.readdata("url");
+    
+	// Step3: Navigate to the application using URL
+	  
+		    webdriverobj.navigateToApp(url1);
+		    
+			Reporter.log("BrowserSetup "+browsername+"successful", true);
+		}
+
+	@BeforeMethod
+		public void Login() {
+			Reporter.log("Login Successful", true);
+
+		}
+
+		@AfterMethod
+		public void Logout() {
+			Reporter.log("Logout Successful", true);
+		}
+		@AfterClass
+		public void closebrowser() {
+			// Close the Browser
+			//driver.close();
+			webdriverobj.closeWindow();
+			Reporter.log("CloseBrowser Successful", true);
+		}
+
+		
+		@AfterTest
+		public void postcondition() {
+			//Flush the Report Information
+			report.flush();
+			Reporter.log("Postcondition done Successful", true);
+		}
+		
+		@AfterSuite
+		public void terminateSuiteConnections() {
+			Reporter.log("terminate SuiteConnections done Successful",true);
+		}}
+		
+
+
+	
    
-   //server connection
-   @BeforeSuite
-   public void getsuiteconnection()
-   {
-	   Reporter.log("Getsuiteconnection Done sucessfully",true);
-   }
-   @AfterSuite
-   public void terminatesuiteconnection()
-   {
-	   Reporter.log("Terminatesuiteconnection Done sucessfully",true);
-   }
-   
-}
+
 

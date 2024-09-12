@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [RegressionSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="com.Amazokort.kidsproducttest.KidsProduct2Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="updateProduct"/>
+          <include name="addProduct"/>
+          <include name="logout"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="deleteProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="postcondition"/>
+          <include name="precondition"/>
+          <include name="closebrowser"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct2Test -->
+      <class name="com.Amazokort.kidsproducttest.KidsProduct6Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="logout"/>
+          <include name="updateProduct"/>
+          <include name="addProduct"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="deleteProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="login"/>
+          <include name="closebrowser"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct6Test -->
+      <class name="com.Amazokort.kidsproducttest.KidsProduct1Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="logout"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="addProduct"/>
+          <include name="updateProduct"/>
+          <include name="deleteProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="postcondition"/>
+          <include name="precondition"/>
+          <include name="login"/>
+          <include name="closebrowser"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct1Test -->
+      <class name="com.Amazokort.kidsproducttest.KidsProduct10Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="logout"/>
+          <include name="deleteProduct"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="addProduct"/>
+          <include name="updateProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="login"/>
+          <include name="closebrowser"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct10Test -->
+      <class name="com.Amazokort.mensproducttest.MensProductTest">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="deleteProduct"/>
+          <include name="logout"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="addProduct"/>
+          <include name="updateProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="login"/>
+          <include name="closebrowser"/>
+        </methods>
+      </class> <!-- com.Amazokort.mensproducttest.MensProductTest -->
+      <class name="com.Amazokort.kidsproducttest.KidsProduct4Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="addProduct"/>
+          <include name="updateProduct"/>
+          <include name="logout"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="deleteProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="closebrowser"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct4Test -->
+      <class name="com.Amazokort.kidsproducttest.KidsProduct7Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="logout"/>
+          <include name="addProduct"/>
+          <include name="updateProduct"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="deleteProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="postcondition"/>
+          <include name="precondition"/>
+          <include name="closebrowser"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct7Test -->
+      <class name="com.Amazokort.electronicproducttest.ElectronicproductTest">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="logout"/>
+          <include name="addProduct"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="deleteproduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="postcondition"/>
+          <include name="precondition"/>
+          <include name="login"/>
+          <include name="updateproduct"/>
+          <include name="closebrowser"/>
+        </methods>
+      </class> <!-- com.Amazokort.electronicproducttest.ElectronicproductTest -->
+      <class name="com.Amazokort.kidsproducttest.KidsProduct3Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="logout"/>
+          <include name="deleteProduct"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="getsuiteconnection"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="login"/>
+          <include name="updateProduct"/>
+          <include name="closebrowser"/>
+          <include name="addProduct"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct3Test -->
+      <class name="com.Amazokort.kidsproducttest.KidsProduct5Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="logout"/>
+          <include name="addProduct"/>
+          <include name="updateProduct"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="deleteProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="closebrowser"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct5Test -->
+      <class name="com.Amazokort.kidsproducttest.KidsProduct8Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="logout"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="deleteProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="updateProduct"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="addProduct"/>
+          <include name="login"/>
+          <include name="closebrowser"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct8Test -->
+      <class name="com.Amazokort.kidsproducttest.KidsProduct9Test">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="addProduct"/>
+          <include name="updateProduct"/>
+          <include name="logout"/>
+          <include name="deleteProduct"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="getsuiteconnection"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="login"/>
+          <include name="closebrowser"/>
+        </methods>
+      </class> <!-- com.Amazokort.kidsproducttest.KidsProduct9Test -->
+      <class name="com.Amazokart.producttest.product_CommonTest">
+        <methods>
+          <include name="browserSetup"/>
+          <include name="logout"/>
+          <include name="terminatesuiteconnection"/>
+          <include name="deleteProduct"/>
+          <include name="getsuiteconnection"/>
+          <include name="postcondition"/>
+          <include name="precondition"/>
+          <include name="addProduct"/>
+          <include name="closebrowser"/>
+          <include name="updateProduct"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- com.Amazokart.producttest.product_CommonTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [RegressionSuite] -->

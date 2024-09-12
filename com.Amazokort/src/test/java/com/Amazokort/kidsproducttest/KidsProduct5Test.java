@@ -3,20 +3,22 @@ package com.Amazokort.kidsproducttest;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class KidsProductTest4 
+import com.Amazokart.generic.common.BaseClass;
+
+public class KidsProduct5Test extends BaseClass
 {
-	@Test(groups="integration")
-	public void addproduct()
+	@Test(groups="FT")
+	public void addProduct()
 	{
 		Reporter.log("Addproduct--Kids PRD sucessfully",true);
 	}
-	@Test(groups="functionality")
-	public void updateproduct()
+	@Test(groups="IT")
+	public void updateProduct()
 	{
 		Reporter.log("Updateproduct--Kids PRD sucessfully",true);
 	}
-	@Test(groups="smoke")
-	public void deleteproduct()
+	@Test(groups="ST")
+	public void deleteProduct()
 	{
 		Reporter.log("deleteproduct--Kids PRD sucessfully",true);
 	}

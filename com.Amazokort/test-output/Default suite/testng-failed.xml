@@ -5,15 +5,18 @@
     <classes>
       <class name="com.Amazokort.registertest.RegisterTest">
         <methods>
-          <include name="browserSetup"/>
-          <include name="logout"/>
-          <include name="terminatesuiteconnection"/>
-          <include name="createuser_invalidData"/>
-          <include name="getsuiteconnection"/>
-          <include name="postcondition"/>
+          <include name="browserSetUp"/>
+          <include name="registerValidData"/>
+          <include name="validateRegisterButtonposition"/>
+          <include name="Logout"/>
+          <include name="getSuiteConnections"/>
+          <include name="Login"/>
+          <include name="validateRegisterButtoncolour"/>
           <include name="precondition"/>
-          <include name="login"/>
+          <include name="postcondition"/>
+          <include name="validateRegisterButtonsize"/>
           <include name="closebrowser"/>
+          <include name="terminateSuiteConnections"/>
         </methods>
       </class> <!-- com.Amazokort.registertest.RegisterTest -->
     </classes>

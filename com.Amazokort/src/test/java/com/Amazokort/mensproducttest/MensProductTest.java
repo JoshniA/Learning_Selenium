@@ -3,22 +3,24 @@ package com.Amazokort.mensproducttest;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class MensProductTest 
+import com.Amazokart.generic.common.BaseClass;
+
+public class MensProductTest extends BaseClass 
 {
-	@Test
-	public void addproduct()
+	@Test(groups="FT")
+	public void addProduct()
 	{
-		Reporter.log("Addproduct--Mens PRD sucessfully",true);
+		Reporter.log("Addedproduct--Mens sucessfully",true);
 	}
-	@Test
-	public void updateproduct()
+	@Test(groups="IT")
+	public void updateProduct()
 	{
-		Reporter.log("Updateproduct--Mens PRD sucessfully",true);
+		Reporter.log("Updatedproduct--Mens sucessfully",true);
 	}
-	@Test
-	public void deleteproduct()
+	@Test(groups="ST")
+	public void deleteProduct()
 	{
-		Reporter.log("deleteproduct--Mens PRD sucessfully",true);
+		Reporter.log("deletedproduct--Mens sucessfully",true);
 	}
 
 }

@@ -3,7 +3,7 @@ package com.Amazokort.logintest;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class LoginTest
+public class LoginTest 
 {
 	@Test
 	public void login_ValidData() 

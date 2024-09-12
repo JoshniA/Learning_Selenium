@@ -1,76 +1,192 @@
 package com.Amazokort.registertest;
 
-import java.io.IOException;
-
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import com.Amazokart.generic.common.BaseClass;
 import com.Amazokart.generic.pagerepository.RegisterPage;
-import com.Amazokort.generic.excelutility.ReadExcelFile;
+import com.aventstack.extentreports.Status;
 
-
-//@Listeners(com.Amazokart.generic.listenerutility.Listeners.class)
 public class RegisterTest extends BaseClass
 {
-	
-	@Test(enabled=false)
-	public void createuser_validData() throws Throwable, Throwable
+	@Test()
+	public void registerValidData()
 	{
-		//verify page Using Assert
-	    String exp_title="LEarning WEB TECHNOLOGY FORMS";
-	    String act_title=driver.getTitle();
-	    System.out.println(act_title);
-	    Assert.assertEquals(act_title,exp_title );
-	    
-	    //Create Object for RegisterPage
-	     RegisterPage regpage=new RegisterPage();
-	    //Step1:Clear the Name in the Name Textfield
-	    driver.findElement(By.id("name")).clear();
-		Reporter.log("createuser_validData for Register Test",true);
 		
-		//Create an Object for ExcelUtilityFile class
-	   // ReadExcelFile excel_f=new ReadExcelFile();
-	    
-		//step2:write the name in the name Text Field
-	    regpage.getname().sendKeys(excelobj.readdata("student", 1, 1));
-	   
-	    
-	    //step 3:Display the mail
-	    System.out.println(excelobj.readdata("Sheet1", 2,2));
-	    
-	    //step 4:Write the data
-	    excelobj.writedata("Sheet1", 2, 2, "joshni");
-		Reporter.log("createuser_validData for Register Test",true);
-
-	}
-	
-	
-	@Test(dataProvider = "register")
-	public void createuser_invalidData(String name,String email, String password)
-	{
-		//Step1:isentify name Testfield
-		driver.findElement(By.id("name")).clear();
-		driver.findElement(By.id("name")).sendKeys(name);
+		String name=excelobj.readdata("Sheet1",1,1);
+		String email=excelobj.readdata("Sheet1",1,2);
+		String password=excelobj.readdata("Sheet1",1,3);
+		String mobno=excelobj.readdata("Sheet1",1,4);
+		String feedback=excelobj.readdata("Sheet1",1,6);
+		test.log(Status.INFO, "Data taken from excel file sucess");
 		
-		//Step1:isentify name Testfield
-		driver.findElement(By.id("email")).clear();
-		driver.findElement(By.id("email")).sendKeys(email);
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
-		//Step1:isentify name Testfield
-		driver.findElement(By.id("password")).clear();
-		driver.findElement(By.id("password")).sendKeys(password);
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-		
-		System.out.println("Name"+name);
-		System.out.println("Id"+email);
-		System.out.println("Dept"+password);
+				//provide implicitly wait
+				webdriverobj.waitUntilElementFound();
+				
+				String exptitle="LearningSelenium";
+				
+				String acttitle=webdriverobj.driver.getTitle();
+				System.out.println(acttitle);
+				
+				// Step 1: Verify Register page using Assert
+				Assert.assertEquals(exptitle, acttitle,"verified Register Page");
+				test.log(Status.PASS,"Step:1-VERIFIES-TITLE,REGISTER PAGE IS DISPLAYED");
+				
+				//Create an object for Register Page
+				RegisterPage regpage=new RegisterPage(webdriverobj.driver);
+				
+				boolean elementExpCondition=true;
+				boolean elementActualCondition=regpage.getNameTextField().isDisplayed();
+				
+				//Step 2: Verify the element
+				Assert.assertEquals(elementExpCondition, elementActualCondition,"Verified NameTextField Webelement -It is Displayed");
+				test.log(Status.PASS,"Step:2-Verify -NameTextField,It is Displayed");
+				 	
+				//Step 3: Perform Actions --clear
+				regpage.getNameTextField().clear();
+				test.log(Status.PASS,"Step:3-NameTextField Cleared Sucess");
+				
+				//Step 4: Perform Actions --Enter Name
+				regpage.getNameTextField().sendKeys(name);;
+				test.log(Status.PASS,"Step:4-Enter UserName in NameTextField Sucess");
 
-		Reporter.log("createuser_InvalidData for Register Test",true);
+				
+				//Step 5: Perform Actions --Enter Email
+			   regpage.getEmailTextField().sendKeys(email);
+				test.log(Status.PASS,"Step:5-Enter emailTextField Sucess");
+
+						
+				
+				//Step 6: Perform Actions --Enter Password
+				regpage.getPwdTextField().sendKeys(password);
+				test.log(Status.PASS,"Step:6-enter PasswordTextField Sucess");
+
+				
+				//Step 7: Perform Actions --Enter Mobile number
+				regpage.getMobTextField().sendKeys(mobno);
+				test.log(Status.PASS,"Step:7-Enter MobileTextField  Sucess");
+
+				
+				//Step 8: Perform Actions --Enter Feedback
+				regpage.getFeedbackTextfield().sendKeys(feedback);
+				test.log(Status.PASS,"Step:8-Enter FeedbackTextField Sucess");
+				test.log(Status.INFO,"Register Valid data sucess");
+
+			}
+	
+	@Test
+	public void validateRegisterButtoncolour()
+	{
+		 webdriverobj.waitUntilElementFound();
+			
+			String exptitle="LearningSelenium";
+			
+			String acttitle=webdriverobj.driver.getTitle();
+			System.out.println(acttitle);
+			
+			// Step 1: Verify Register page using Assert
+			Assert.assertEquals(exptitle, acttitle,"verified Register Page");
+			
+			//Create an object for Register Page
+			RegisterPage regpage=new RegisterPage(webdriverobj.driver);
+			
+			boolean elementExpCondition=true;
+			boolean elementActualCondition=regpage.getRegisterButton().isDisplayed();
+			
+			//Step 2: Verify the element
+			Assert.assertEquals(elementExpCondition, elementActualCondition,"Verified NameTextField Webelement -It is Displayed");
+		    
+			String color=regpage.getRegisterButton().getCssValue("color");
+			
+			System.out.println("color of webelement is "+color);
+			Reporter.log("RegisterButtoncolour",true);
+		
+	}
+	@Test
+	public void validateRegisterButtonsize()
+	{
+		webdriverobj.waitUntilElementFound();
+		
+		String exptitle="LearningSelenium";
+		
+		String acttitle=webdriverobj.driver.getTitle();
+		System.out.println(acttitle);
+		
+		// Step 1: Verify Register page using Assert
+		Assert.assertEquals(exptitle, acttitle,"verified Register Page");
+		
+		//Create an object for Register Page
+		RegisterPage regpage=new RegisterPage(webdriverobj.driver);
+		
+		boolean elementExpCondition=true;
+		boolean elementActualCondition=regpage.getRegisterButton().isDisplayed();
+		
+		//Step 2: Verify the element
+		Assert.assertEquals(elementExpCondition, elementActualCondition,"Verified NameTextField Webelement -It is Displayed");
+	    
+        org.openqa.selenium.Dimension size=regpage.getRegisterButton().getSize();
+		
+		int width=size.getWidth();
+		
+		int height=size.getHeight();
+		
+		
+		System.out.println("Width :"+width);
+		
+
+		System.out.println("Height  :"+height);
+		Reporter.log("RegisterButtonsize",true);
+
+	
+	}
+	
+	@Test
+	public void validateRegisterButtonposition()
+	{
+		 webdriverobj.waitUntilElementFound();
+			
+			String exptitle="LearningSelenium";
+			
+			String acttitle=webdriverobj.driver.getTitle();
+			System.out.println(acttitle);
+			
+			// Step 1: Verify Register page using Assert
+			Assert.assertEquals(exptitle, acttitle,"verified Register Page");
+			
+			//Create an object for Register Page
+			RegisterPage regpage=new RegisterPage(webdriverobj.driver);
+			
+			boolean elementExpCondition=true;
+			boolean elementActualCondition=regpage.getRegisterButton().isDisplayed();
+			
+			//Step 2: Verify the element
+			Assert.assertEquals(elementExpCondition, elementActualCondition,"Verified NameTextField Webelement -It is Displayed");
+	        org.openqa.selenium.Point location=regpage.getRegisterButton().getLocation();
+			
+			int x=location.getX();
+			
+			int y=location.getY();
+			
+			
+			System.out.println("x axis :"+x);
+			
+			System.out.println("y axis  :"+y);
+			Reporter.log("RegisterButtonposition",true);
+		
 	}
 
-}
+
+
+	}
+		
+	
+

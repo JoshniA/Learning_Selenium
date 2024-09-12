@@ -3,22 +3,24 @@ package com.Amazokart.producttest;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class product_CommonTest 
+import com.Amazokart.generic.common.BaseClass;
+
+public class product_CommonTest extends BaseClass
 {
-	@Test
-	public void addproduct()
+	@Test(groups="FT")
+	public void addProduct()
 	{
-		Reporter.log("Addproduct--Common PRD sucessfully",true);
+		Reporter.log("Addedproduct--Common sucessfully",true);
 	}
-	@Test
-	public void updateproduct()
+	@Test(groups="IT")
+	public void updateProduct()
 	{
-		Reporter.log("Updateproduct--Common PRD sucessfully",true);
+		Reporter.log("Updatedproduct--Common sucessfully",true);
 	}
-	@Test
-	public void deleteproduct()
+	@Test(groups="ST")
+	public void deleteProduct()
 	{
-		Reporter.log("deleteproduct--Common PRD sucessfully",true);
+		Reporter.log("deletedproduct--Common sucessfully",true);
 	}
 
 
